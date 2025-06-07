@@ -44,13 +44,20 @@ class MagicNumber:
         else:
             print(f"You lost. {self.__computer.my_number} was my number")
             self.__player.take_credits(10)
+
+        if self.__player.credits == 0:
+            print("You lost all your credits. Game Over :((")
+            self.exit_game()
         
         response = input("Do you want to play again? (y/n)")
         if response == "y":
             self.game_loop()
         else:
-            print("Thanks for playing my game")
+            self.exit_game()
     
+    def exit_game(self):
+        print("Thanks for playing my game")
+
     @staticmethod
     def clear_screen():
         os.system("cls")
