@@ -15,7 +15,7 @@ class MagicNumber:
         print("If you lost all your credits the game ends.")
 
         input("Press Enter to continue...")
-        
+
         self.game_loop()
     
     def game_loop(self):
@@ -27,7 +27,23 @@ class MagicNumber:
         self.__computer.think_number()
         self.__player.think_number()
 
-        pass
+        while self.__computer.my_number != self.__player.my_number:
+            try_count -= 1
+            if try_count == 0:
+                break
+            self.clear_screen()
+            print(f"Wrong guess. Try again. You have {try_count} tries left.")
+            self.__player.think_number()
+        
+        self.clear_screen()
+
+        # round end condition
+        if self.__computer.my_number == self.__player.my_number:
+            print("You win")
+            self.__player.add_credits(10)
+        else:
+            print(f"You lost. {self.__computer.my_number} was my number")
+            self.__player.take_credits(10)
     
     @staticmethod
     def clear_screen():
@@ -40,6 +56,14 @@ class Player:
     
     def think_number(self):
         self.__my_number = int(input("What is your guess? "))
+
+    def add_credits(self, credits):
+        self.__credits += credits
+        print(f"You win {credits} credits. Now you have {self.__credits} cretids.")
+    
+    def take_credits(self, credits):
+        self.__credits -= credits
+        print(f"You lost {credits} credits. Now you left with {self.__credits} credits.")
     
     @property
     def credits(self):
