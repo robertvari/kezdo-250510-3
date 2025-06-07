@@ -1,4 +1,4 @@
-import os, time
+import os, time, random
 
 # compound class
 class MagicNumber:
@@ -15,6 +15,19 @@ class MagicNumber:
         print("If you lost all your credits the game ends.")
 
         input("Press Enter to continue...")
+        
+        self.game_loop()
+    
+    def game_loop(self):
+        self.clear_screen()
+
+        # classic python variable
+        try_count = 3
+
+        self.__computer.think_number()
+        self.__player.think_number()
+
+        pass
     
     @staticmethod
     def clear_screen():
@@ -23,16 +36,32 @@ class MagicNumber:
 class Player:
     def __init__(self):
         self.__credits = 10
+        self.__my_number = 0
+    
+    def think_number(self):
+        self.__my_number = int(input("What is your guess? "))
     
     @property
     def credits(self):
         return self.__credits
+    
+    @property
+    def my_number(self):
+        return self.__my_number
 
 class Computer:
     def __init__(self):
         self.__min_number = 1
         self.__max_number = 10
+        self.__my_number = 0
     
+    def think_number(self):
+        self.__my_number = random.randint(self.__min_number, self.__max_number)
+    
+    @property
+    def my_number(self):
+        return self.__my_number
+
     @property
     def min_number(self):
         return self.__min_number
