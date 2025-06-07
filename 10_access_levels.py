@@ -4,17 +4,17 @@ class CoffeeMaker:
         self.__model = model
         
         # protected attribute
-        self.__color = color
+        self._color = color
 
         # public attribute
-        self.__price = price
+        self.price = price
     
     def __str__(self):
-        return f"Model: {self.__model}, Color: {self.__color}, Price: {self.__price}"
+        return f"Model: {self.__model}, Color: {self._color}, Price: {self.price}"
 
 philips = CoffeeMaker("PHILIPS HD7411", "White", 12999)
 philips.__model = "Csaba"
-philips.__color = "Red"
-philips.__price = 8999
+philips._color = "Red"
+philips.price
 
 print(philips)
