@@ -44,6 +44,12 @@ class MagicNumber:
         else:
             print(f"You lost. {self.__computer.my_number} was my number")
             self.__player.take_credits(10)
+        
+        response = input("Do you want to play again? (y/n)")
+        if response == "y":
+            self.game_loop()
+        else:
+            print("Thanks for playing my game")
     
     @staticmethod
     def clear_screen():
