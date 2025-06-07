@@ -13,9 +13,21 @@ class CoffeeMaker:
         print(f"Model: {self.model}, Water: {self.water}, Beans: {self.beans}, Coffees Made: {self.coffees_made}")
 
     def make_coffee(self):
+        # check for water
+        if self.water <= 0:
+            print("Please fill up water tank")
+            time.sleep(3)
+            return
+        
+        # check for beans
+        if self.beans <= 0:
+            print("Fill up beans.")
+            time.sleep(3)
+            return
+
         self.coffees_made += 1
-        self.water -= random.randint(20, 50)
-        self.beans -= random.randint(10, 30)
+        self.water -= random.randint(30, 60)
+        self.beans -= random.randint(30, 50)
 
         os.system("cls")
         print("-"*10, self.model, "-"*10)
