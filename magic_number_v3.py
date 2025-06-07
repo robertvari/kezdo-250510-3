@@ -7,9 +7,16 @@ class MagicNumber:
     def start(self):
         print("-"*50, "MAGIC NUMBER", "-"*50)
         print(f"I think of a number between {self.__computer.min_number} and {self.__computer.max_number}. Can you guess it?")
+        print(f"You start with {self.__player.credits} credits. If you win I give you 10 credit")
+        print("If you lost all your credits the game ends.")
 
 class Player:
-    pass
+    def __init__(self):
+        self.__credits = 10
+    
+    @property
+    def credits(self):
+        return self.__credits
 
 class Computer:
     def __init__(self):
