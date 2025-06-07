@@ -1,3 +1,5 @@
+import os, time
+
 # compound class
 class MagicNumber:
     def __init__(self):
@@ -5,10 +7,18 @@ class MagicNumber:
         self.__computer = Computer()
 
     def start(self):
+        self.clear_screen()
+
         print("-"*50, "MAGIC NUMBER", "-"*50)
         print(f"I think of a number between {self.__computer.min_number} and {self.__computer.max_number}. Can you guess it?")
         print(f"You start with {self.__player.credits} credits. If you win I give you 10 credit")
         print("If you lost all your credits the game ends.")
+
+        input("Press Enter to continue...")
+    
+    @staticmethod
+    def clear_screen():
+        os.system("cls")
 
 class Player:
     def __init__(self):
