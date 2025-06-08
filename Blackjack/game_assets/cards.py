@@ -23,14 +23,12 @@ class Deck:
         self.create()
     
     def create(self):
-        pass
+        suits = ["♥", "♣", "♦", "♠"]
     
     def __str__(self):
         return str(self.__cards)
 
 
 if __name__ == "__main__":
-    suits = ["Heart ♥", "Club ♣", "Diamond ♦", "Spade ♠"]
-
     deck = Deck()
     print(deck)
