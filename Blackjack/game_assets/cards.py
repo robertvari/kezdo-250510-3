@@ -8,6 +8,10 @@ class Card:
     @property
     def value(self):
         return self.__value
+    
+    @value.setter
+    def value(self, new_value):
+        self.__value = new_value
 
     @property
     def name(self):

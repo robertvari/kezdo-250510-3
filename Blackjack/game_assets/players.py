@@ -11,6 +11,34 @@ class Player_BASE:
         # Then: call methods
         self.create()
 
+    def create(self):
+        self.__name = self.get_random_name()
+        self.__credits = random.randint(20, 100)
+
+    def get_random_name(self):
+        first_names = ["Liam", "Emma", "Noah", "Olivia", "Ethan", "Ava", "James", "Sophia", "Benjamin", "Mia"]
+        last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"]
+        
+        return f"{random.choice(first_names)} {random.choice(last_names)}"
+
+    def init_hand(self, deck):
+        self.__hand.clear()
+        self.__hand.append(deck.draw())
+
+        # check hand value
+        hand_value = self.hand_value
+
+        # get new card
+        new_card = deck.draw()
+
+        # TODO if hand value > 10 and new_card value == 11
+        #   change value to 1
+
+        if hand_value > 10 and new_card.value == 11:
+            new_card.value = 1
+        
+        self.__hand.append(new_card)
+
     @property
     def name(self):
         return self.__name
@@ -23,19 +51,22 @@ class Player_BASE:
     def credits(self):
         return self.__credits
 
-
-    def create(self):
-        self.__name = self.get_random_name()
-        self.__credits = random.randint(20, 100)
-
-    def get_random_name(self):
-        first_names = ["Liam", "Emma", "Noah", "Olivia", "Ethan", "Ava", "James", "Sophia", "Benjamin", "Mia"]
-        last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"]
+    @property
+    def hand_value(self):
+        hand_value = 0
+        for card in self.__hand:
+            hand_value += card.value
         
-        return f"{random.choice(first_names)} {random.choice(last_names)}"
+        # list comprehension
+        # hand_value = sum([card.value for card in self.__hand])
+        
+        return hand_value
 
     def __str__(self):
         return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand}"
+
+
+
 
 class Player(Player_BASE):
     # partial override on create()
@@ -48,7 +79,13 @@ class AI_Player(Player_BASE):
 
 
 if __name__ == "__main__":
+    from cards import Deck
+    deck = Deck()
     player = Player()
     ai_player = AI_Player()
+
+    player.init_hand(deck)
+    ai_player.init_hand(deck)
+
     print(player)
     print(ai_player)
