@@ -11,6 +11,19 @@ class Player_BASE:
         # Then: call methods
         self.create()
 
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, new_name):
+        self.__name = new_name
+    
+    @property
+    def credits(self):
+        return self.__credits
+
+
     def create(self):
         self.__name = self.get_random_name()
         self.__credits = random.randint(20, 100)
@@ -25,7 +38,17 @@ class Player_BASE:
         return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand}"
 
 class Player(Player_BASE):
-    pass
+    # partial override on create()
+    def create(self):
+        super().create()
+        self.name = "Robert Vari"
 
 class AI_Player(Player_BASE):
     pass
+
+
+if __name__ == "__main__":
+    player = Player()
+    ai_player = AI_Player()
+    print(player)
+    print(ai_player)
