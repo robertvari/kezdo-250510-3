@@ -21,6 +21,9 @@ class Player_BASE:
         
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
+    def __str__(self):
+        return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand}"
+
 class Player(Player_BASE):
     pass
 
