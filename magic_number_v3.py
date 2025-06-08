@@ -70,11 +70,15 @@ class Player_BASE:
         self.__max_number = 10
     
     def think_number(self):
-        self.__my_number = random.randint(self.__min_number, self.__max_number)
+        self.__my_number = 5
 
     @property
     def my_number(self):
         return self.__my_number
+    
+    @my_number.setter
+    def my_number(self, new_number):
+        self.__my_number = new_number
     
     @property
     def min_number(self):
@@ -92,7 +96,7 @@ class Player(Player_BASE):
     
     # override base
     def think_number(self):
-        self.__my_number = int(input("What is your guess? "))
+        self.my_number = int(input("What is your guess? "))
 
     def add_credits(self, credits):
         self.__credits += credits
