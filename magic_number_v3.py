@@ -62,11 +62,26 @@ class MagicNumber:
     def clear_screen():
         os.system("cls")
 
-class Player:
+
+class Player_BASE:
     def __init__(self):
-        self.__credits = 10
         self.__my_number = 0
     
+    def think_number(self):
+        self.__my_number = random.randint(self.__min_number, self.__max_number)
+
+    @property
+    def my_number(self):
+        return self.__my_number
+
+
+
+class Player(Player_BASE):
+    def __init__(self):
+        super().__init__()  # run BASE __init__()
+        self.__credits = 10
+    
+    # override base
     def think_number(self):
         self.__my_number = int(input("What is your guess? "))
 
@@ -82,22 +97,13 @@ class Player:
     def credits(self):
         return self.__credits
     
-    @property
-    def my_number(self):
-        return self.__my_number
 
-class Computer:
+class Computer(Player_BASE):
     def __init__(self):
+        super().__init__()
+        
         self.__min_number = 1
         self.__max_number = 10
-        self.__my_number = 0
-    
-    def think_number(self):
-        self.__my_number = random.randint(self.__min_number, self.__max_number)
-    
-    @property
-    def my_number(self):
-        return self.__my_number
 
     @property
     def min_number(self):
