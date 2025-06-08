@@ -23,6 +23,7 @@ class Player_BASE:
 
     def init_hand(self, deck):
         self.__hand.clear()
+        self.__playing = True
         self.__hand.append(deck.draw())
 
         # get new card
