@@ -59,7 +59,7 @@ class Player_BASE:
         return hand_value
 
     def __str__(self):
-        return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand}"
+        return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand} Hand Value {self.hand_value}"
 
 
 
@@ -80,8 +80,14 @@ if __name__ == "__main__":
     player = Player()
     ai_player = AI_Player()
 
+    # start game
     player.init_hand(deck)
     ai_player.init_hand(deck)
 
+    # start rounds
+    player.draw(deck)
+    ai_player.draw(deck)
+
+    # print player stats
     print(player)
     print(ai_player)
