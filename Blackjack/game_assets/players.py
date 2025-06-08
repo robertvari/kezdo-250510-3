@@ -22,7 +22,6 @@ class Player_BASE:
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
     def init_hand(self, deck):
-        print(f"{self.name} init hand...")
         self.__hand.clear()
         self.__playing = True
         self.__hand.append(deck.draw())
