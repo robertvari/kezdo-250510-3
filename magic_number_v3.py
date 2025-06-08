@@ -66,6 +66,8 @@ class MagicNumber:
 class Player_BASE:
     def __init__(self):
         self.__my_number = 0
+        self.__min_number = 1
+        self.__max_number = 10
     
     def think_number(self):
         self.__my_number = random.randint(self.__min_number, self.__max_number)
@@ -73,7 +75,14 @@ class Player_BASE:
     @property
     def my_number(self):
         return self.__my_number
-
+    
+    @property
+    def min_number(self):
+        return self.__min_number
+    
+    @property
+    def max_number(self):
+        return self.__max_number
 
 
 class Player(Player_BASE):
@@ -99,19 +108,7 @@ class Player(Player_BASE):
     
 
 class Computer(Player_BASE):
-    def __init__(self):
-        super().__init__()
-        
-        self.__min_number = 1
-        self.__max_number = 10
-
-    @property
-    def min_number(self):
-        return self.__min_number
-    
-    @property
-    def max_number(self):
-        return self.__max_number
+    pass
 
 
 my_game = MagicNumber()
