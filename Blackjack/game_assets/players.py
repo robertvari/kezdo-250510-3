@@ -2,10 +2,14 @@ import random
 
 class Player_BASE:
     def __init__(self):
+        # First: define attributes
         self.__name = None
         self.__credits = 0
         self.__hand = []
         self.__playing = True
+
+        # Then: call methods
+        self.create()
 
     def create(self):
         self.__name = self.get_random_name()
@@ -15,7 +19,7 @@ class Player_BASE:
         first_names = ["Liam", "Emma", "Noah", "Olivia", "Ethan", "Ava", "James", "Sophia", "Benjamin", "Mia"]
         last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"]
         
-        return "Emma Williams"
+        return f"{random.choice(first_names)} {random.choice(last_names)}"
 
 class Player(Player_BASE):
     pass
