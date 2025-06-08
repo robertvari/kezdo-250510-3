@@ -22,6 +22,7 @@ class Player_BASE:
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
     def init_hand(self, deck):
+        print(f"{self.name} init hand...")
         self.__hand.clear()
         self.__playing = True
         self.__hand.append(deck.draw())
@@ -47,6 +48,10 @@ class Player_BASE:
             else:
                 print(f"{self.name} finishes.")
                 self.__playing = False
+
+    def add_credits(self, credits):
+        self.__credits += credits
+        print(f"{self.name} get {credits}")
 
     @property
     def name(self):
@@ -86,6 +91,8 @@ class Player_BASE:
     def __str__(self):
         return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand} Hand Value {self.hand_value}"
 
+    def __repr__(self):
+        return self.name
 
 
 
@@ -128,6 +135,7 @@ if __name__ == "__main__":
     # start game
     player.init_hand(deck)
     ai_player.init_hand(deck)
+
 
     # start rounds
     ai_player.draw(deck)
