@@ -118,7 +118,9 @@ class AI_Player(Player_BASE):
 
 if __name__ == "__main__":
     from cards import Deck
+    
     deck = Deck()
+    
     player = Player()
     ai_player = AI_Player()
 
@@ -127,8 +129,8 @@ if __name__ == "__main__":
     ai_player.init_hand(deck)
 
     # start rounds
-    player.draw(deck)
     ai_player.draw(deck)
+    player.draw(deck)
 
     # print player stats
     print(player)
