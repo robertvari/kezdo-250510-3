@@ -39,6 +39,15 @@ class Deck:
             ["Jack", 10],
             ["Ace", 11]
         ]
+
+        for suit in suits:
+            for card in cards:
+                card_name = f"{suit} {card[0]}"
+                card_value = card[1]
+
+                new_card = Card(card_name, card_value)
+                self.__cards.append(new_card)
+
     
     def __str__(self):
         return str(self.__cards)
