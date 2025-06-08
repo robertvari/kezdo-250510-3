@@ -25,16 +25,12 @@ class Player_BASE:
         self.__hand.clear()
         self.__hand.append(deck.draw())
 
-        # check hand value
-        hand_value = self.hand_value
-
         # get new card
-        new_card = deck.draw()
+        self.add_card(deck.draw())
 
-        # TODO if hand value > 10 and new_card value == 11
-        #   change value to 1
-
-        if hand_value > 10 and new_card.value == 11:
+    def add_card(self, new_card):
+        # check hand value
+        if self.hand_value > 10 and new_card.value == 11:
             new_card.value = 1
         
         self.__hand.append(new_card)
