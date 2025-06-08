@@ -70,6 +70,18 @@ class Player_BASE:
         
         return hand_value
 
+    @property
+    def playing(self):
+        return self.__playing
+    
+    @playing.setter
+    def playing(self, new_playing):
+        self.__playing = new_playing
+
+    @property
+    def hand(self):
+        return tuple(self.__hand)
+
     def __str__(self):
         return f"{self.__name} Credits: {self.__credits} Hand: {self.__hand} Hand Value {self.hand_value}"
 
@@ -81,6 +93,24 @@ class Player(Player_BASE):
     def create(self):
         super().create()
         self.name = "Robert Vari"
+    
+    def draw(self, deck):
+        print(f"This is your turn {self.name}")
+
+        while self.playing:
+            if self.hand_value > 21:
+                print("Your hand valu is greater than 21")
+                self.playing = False
+                break
+
+            print(f"Your cards: {self.hand} Value: {self.hand_value}")
+            response = input("Do you want to draw a new card? (y/n)")
+            if response == "y":
+                new_card = deck.draw()
+                print(f"Your new card: {new_card}")
+                self.add_card(new_card)
+            else:
+                self.playing = False
 
 class AI_Player(Player_BASE):
     pass
