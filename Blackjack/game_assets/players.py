@@ -99,7 +99,7 @@ class Player(Player_BASE):
     # partial override on create()
     def create(self):
         super().create()
-        self.name = "Robert Vari"
+        self.name = input("What is your name? ")
     
     def draw(self, deck):
         print(f"This is your turn {self.name}")
@@ -118,6 +118,10 @@ class Player(Player_BASE):
                 self.add_card(new_card)
             else:
                 self.playing = False
+
+    def add_credits(self, credits):
+        super().add_credits(credits)
+        print(f"You have {self.credits} credits.")
 
 class AI_Player(Player_BASE):
     pass
