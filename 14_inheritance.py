@@ -3,7 +3,6 @@ import random
 class Player_BASE:
     def __init__(self):
         self.my_number = 0
-        self.name = None
 
     def think_number(self):
         self.my_number = random.randint(1, 10)
